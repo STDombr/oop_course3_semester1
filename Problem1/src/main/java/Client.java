@@ -3,10 +3,11 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
+import Object.Cat;
+
 public class Client {
     private Socket client;
     private  ObjectOutputStream out;
-
     public Client(String address, Integer port) throws IOException {
         try{
             client = new Socket(InetAddress.getByName(address), port);
