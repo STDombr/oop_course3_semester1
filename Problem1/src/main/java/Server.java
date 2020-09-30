@@ -16,18 +16,22 @@ public class Server {
     }
 
     public void run() throws IOException {
+        System.out.println("Server is waiting.");
+
         client = server.accept();
         in = new ObjectInputStream(client.getInputStream());
 
         try{
             cat = (Cat) in.readObject();
+            System.out.println('\n' + "Operation successful!");
             cat.print();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException temp) {
+            temp.printStackTrace();
+        } finally{
+            in.close();
+            server.close();
+            client.close();
         }
-        in.close();
-        server.close();
-        client.close();
     }
 
     public static void main(String[] args) throws IOException {

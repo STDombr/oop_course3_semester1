@@ -22,6 +22,7 @@ public class Client {
         try{
             out.writeObject(cat);
             out.flush();
+            System.out.println("Operation successful!");
         } catch (IOException temp){
             temp.printStackTrace();
         } finally {
