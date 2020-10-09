@@ -2,12 +2,24 @@ package devices.electric;
 
 import devices.Device;
 
+import java.util.Scanner;
+
 /**
  * Class of electric devices
  */
-public class ElectricDevice extends Device {
-    protected double power;     //power in watts
-    protected boolean mode;     //device mode (1 - on / 0 - off)
+public class ElectricDevice extends Device implements Comparable<ElectricDevice>{
+    private double power;     //power in watts
+    private boolean mode;     //device mode (1 - on / 0 - off)
+
+    /**
+     * Constructor
+     */
+    public ElectricDevice() {
+        super();
+
+        this.power = 0;
+        mode = false;
+    }
 
     /**
      * Constructor
@@ -74,18 +86,54 @@ public class ElectricDevice extends Device {
             this.power = power;
     }
 
+    public boolean getMode() {
+        return mode;
+    }
+
+    public void setMode(boolean mode) {
+        this.mode = mode;
+    }
+
     /**
      * Function to display electric device
      */
     @Override
     public void display() {
-        System.out.print("Name: " + name +
-                ", company: " + productionCompany +
+        System.out.print("Name: " + this.getName() +
+                ", company: " + this.getProductionCompany() +
                 ", " + power + "W" +
                 ", mode: ");
         if (mode)
             System.out.println("on.");
         else
             System.out.println("off.");
+    }
+
+    /**
+     * Overloading method compare
+     * @param temp
+     * @return result of compare
+     */
+    @Override
+    public int compareTo(ElectricDevice temp) {
+        if (this.power < temp.getPower())
+            return -1;
+        else if (this.power > temp.getPower())
+            return 1;
+
+        return 0;
+    }
+
+    /**
+     * Function to create device from console
+     */
+    @Override
+    public void createFromConsole(){
+        Scanner input = new Scanner(System.in);
+
+        super.createFromConsole();
+
+        System.out.print("Enter power value: ");
+        power = input.nextDouble();
     }
 }

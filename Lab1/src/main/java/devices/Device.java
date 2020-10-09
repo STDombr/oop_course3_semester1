@@ -1,11 +1,18 @@
 package devices;
 
+import java.util.Scanner;
+
 /**
  * Class of devices
  */
 public class Device {
-    protected String name;              //device name
-    protected String productionCompany; //company name
+    private String name;              //device name
+    private String productionCompany; //company name
+
+    /**
+     * Constructor
+     */
+    public Device() { }
 
     /**
      * Constructor
@@ -54,6 +61,18 @@ public class Device {
      */
     public void display(){
         System.out.println("Device: " + name + ", company: " + productionCompany);
+    }
+
+    /**
+     * Function to create device from console
+     */
+    public void createFromConsole(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter name: ");
+        name = input.next();
+        System.out.print("Enter company: ");
+        productionCompany = input.next();
     }
 }
 
