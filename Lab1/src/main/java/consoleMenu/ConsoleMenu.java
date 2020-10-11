@@ -4,6 +4,7 @@ package consoleMenu;
 import devices.electric.ElectricDevice;
 import devices.electric.home.*;
 import home.Home;
+import sql.DataBase;
 
 import java.util.Scanner;
 
@@ -31,13 +32,15 @@ public class ConsoleMenu {
 
         System.out.println("1 - Show all electric devices at home.");
         System.out.println("2 - Add new device.");
-        System.out.println("3 - Remove the device.");
-        System.out.println("4 - Remove all devices.");
-        System.out.println("5 - Turn On / Off the device.");
-        System.out.println("6 - Turn On all devices.");
-        System.out.println("7 - Turn Off all devices.");
-        System.out.println("8 - Show all power consumption at home.");
-        System.out.println("9 - Sort electric devices by power.");
+        System.out.println("3 - Add devices from DB.");
+        System.out.println("4 - Remove the device.");
+        System.out.println("5 - Remove all devices.");
+        System.out.println("6 - Turn On / Off the device.");
+        System.out.println("7 - Turn On all devices.");
+        System.out.println("8 - Turn Off all devices.");
+        System.out.println("9 - Show all power consumption at home.");
+        System.out.println("10 - Sort electric devices by power.");
+        System.out.println("11 - Device search.");
         System.out.println("-1 - Exit.\n");
 
         while(true){
@@ -55,8 +58,14 @@ public class ConsoleMenu {
                 case 2:
                     //Add new device
                     addNewDevice();
+
                     break;
                 case 3:
+                    //Add devices from DB
+                    DataBase.readAllData(getHome().getDevices());
+
+                    break;
+                case 4:
                     //Remove the device
                     deviceNumber = selectADevice();
 
@@ -64,12 +73,12 @@ public class ConsoleMenu {
                         home.removeDevice(deviceNumber);
 
                     break;
-                case 4:
+                case 5:
                     //Remove all devices
                     home.removeDevices();
 
                     break;
-                case 5:
+                case 6:
                     //Turn On / Off the device
                     deviceNumber = selectADevice();
 
@@ -80,25 +89,30 @@ public class ConsoleMenu {
                             home.getDevices().get(deviceNumber).on();
 
                     break;
-                case 6:
+                case 7:
                     //Turn On all devices
                     home.turnOnAllDevices();
 
                     break;
-                case 7:
+                case 8:
                     //Turn Off all devices
                     home.turnOffAllDevices();
 
                     break;
-                case 8:
+                case 9:
                     //Show all power consumption at home
                     double allpowerConsumption = home.allPowerConsumption();
 
                     System.out.println("All power consumption at home: " + allpowerConsumption + "W");
                     break;
-                case 9:
+                case 10:
                     //Sort electric devices by power
                     home.sort();
+
+                    break;
+                case 11:
+                    //Device search
+                    deviceSearch();
 
                     break;
                 case -1:
@@ -119,7 +133,7 @@ public class ConsoleMenu {
 
         if (count == 0)
         {
-            System.out.println("Error. No devices at home.");
+            System.out.println("No devices at home.");
 
             return -1;
         }
@@ -184,6 +198,25 @@ public class ConsoleMenu {
         }
     }
 
+    /**
+     * Function to search and print devices by parameters
+     */
+    private void deviceSearch(){
+        if (home.getDevices().size() <= 0)
+        {
+            System.out.println("No devices at home.");
+            return;
+        }
+
+        double min, max;
+
+        System.out.print("Enter the minimum and maximum power: ");
+
+        min = input.nextDouble();
+        max = input.nextDouble();
+
+        home.displayDevices(min, max);
+    }
     /**
      * home getter
      * @return home

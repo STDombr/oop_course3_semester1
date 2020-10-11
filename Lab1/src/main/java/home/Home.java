@@ -139,9 +139,23 @@ public class Home {
      * Function to display all devices
      */
     public void displayDevices() {
-        for (int i = 0; i < devices.size(); i++){
-            System.out.print(i + ". ");
-            devices.get(i).display();
-        }
+        if (devices.size() == 0)
+            System.out.println("No devices at home.");
+        else
+            for (int i = 0; i < devices.size(); i++){
+                System.out.print(i + ". ");
+                devices.get(i).display();
+            }
+    }
+
+    /**
+     * Function to display devices with a specific power
+     */
+    public void displayDevices(double minPower, double maxPower) {
+        for (int i = 0; i < devices.size(); i++)
+            if (devices.get(i).getPower() >= minPower && devices.get(i).getPower() <= maxPower) {
+                System.out.print(i + ". ");
+                devices.get(i).display();
+            }
     }
 }
