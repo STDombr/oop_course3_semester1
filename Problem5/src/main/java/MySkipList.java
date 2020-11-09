@@ -87,7 +87,7 @@ public class MySkipList {
         return currentNode.value == inputValue;
     }
 
-    public boolean add(Integer inputValue){
+    public synchronized boolean add(Integer inputValue){
         Node[] update = new Node[maxLevel];
         Node currentNode = formUpdateArray(update, inputValue);
         int levels = currentListLevel.get();
@@ -226,5 +226,9 @@ public class MySkipList {
 
     private void unlink(Node previousElement, int level){
         previousElement.next[level] = previousElement.next[level].getReference().next[level];
+    }
+
+    public AtomicInteger getSize() {
+        return size;
     }
 }
