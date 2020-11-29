@@ -138,7 +138,7 @@ public class ConsoleMenu {
             return -1;
         }
 
-        System.out.print("Select a device: ");
+        System.out.println("Select a device: ");
         home.displayDevices();
         System.out.println("-1 - Return.");
 
