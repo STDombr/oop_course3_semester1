@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+           elementFormDefault = "qualified">
+
+    <xs:element name = "Tariffs" type = "tariffInstance"/>
+    <xs:complexType name = "tariffInstance">
+        <xs:sequence>
+            <xs:element name = "tariff" type = "tariff" maxOccurs = "unbounded"/>
+        </xs:sequence>
+        <xs:attribute name = "name" type = "xs:string" use = "required"/>
+    </xs:complexType>
+
+    <xs:complexType name = "tariff">
+        <xs:sequence>
+            <xs:element name = "name" type = "xs:string"/>
+            <xs:element name = "operatorName" type = "xs:string"/>
+            <xs:element name = "payroll" type = "xs:double"/>
+            <xs:element name = "callPrices">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name = "inNetCallPrice" type = "xs:double"/>
+                        <xs:element name = "outNetCallPrice" type = "xs:double"/>
+                        <xs:element name = "landlineCallPrice" type = "xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name = "smsPrice" type = "xs:double"/>
+            <xs:element name = "parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name = "countOfFavNumbers" type = "xs:int"/>
+                        <xs:element name = "connectionPrice" type = "xs:double"/>
+                        <xs:element name = "tariffication" type = "xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name = "id" type = "xs:ID" use = "required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="tariffication">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value = "30 seconds"/>
+            <xs:enumeration value = "60 seconds"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="payroll">
+        <xs:restriction base = "xs:double">
+            <xs:minInclusive value = "0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="inNetCallPrice">
+        <xs:restriction base = "xs:double">
+            <xs:minInclusive value = "0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="outNetCallPrice">
+        <xs:restriction base = "xs:double">
+            <xs:minInclusive value = "0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="landlineCallPrice">
+        <xs:restriction base = "xs:double">
+            <xs:minInclusive value = "0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="smsPrice">
+        <xs:restriction base = "xs:double">
+            <xs:minInclusive value = "0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="countOfFavNumbers">
+        <xs:restriction base = "xs:int">
+            <xs:minInclusive value = "0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="connectionPrice">
+        <xs:restriction base = "xs:double">
+            <xs:minInclusive value = "0"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
