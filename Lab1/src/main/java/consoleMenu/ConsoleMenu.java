@@ -6,6 +6,7 @@ import devices.electric.home.*;
 import home.Home;
 import sql.DataBase;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 /**
@@ -70,12 +71,18 @@ public class ConsoleMenu {
                     deviceNumber = selectADevice();
 
                     if (deviceNumber != -1)
-                        home.removeDevice(deviceNumber);
+                        if (home.removeDevice(deviceNumber))
+                            System.out.println("Device removed.");
+                        else
+                            System.out.println("No such device at home.");
 
                     break;
                 case 5:
                     //Remove all devices
-                    home.removeDevices();
+                    if (home.removeDevices())
+                        System.out.println("Devices removed.");
+                    else
+                        System.out.println("No devices at home.");
 
                     break;
                 case 6:
@@ -91,12 +98,14 @@ public class ConsoleMenu {
                     break;
                 case 7:
                     //Turn On all devices
-                    home.turnOnAllDevices();
+                    if (!home.turnOnAllDevices())
+                        System.out.println("No devices at home.");
 
                     break;
                 case 8:
                     //Turn Off all devices
-                    home.turnOffAllDevices();
+                    if (!home.turnOffAllDevices())
+                        System.out.println("No devices at home.");
 
                     break;
                 case 9:
@@ -107,7 +116,10 @@ public class ConsoleMenu {
                     break;
                 case 10:
                     //Sort electric devices by power
-                    home.sort();
+                    if (home.sort())
+                        System.out.println("Devices sorted from the smallest to the largest power.");
+                    else
+                        System.out.println("No devices at home.");
 
                     break;
                 case 11:
