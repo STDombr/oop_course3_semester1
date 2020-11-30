@@ -32,56 +32,61 @@ public class Home {
      */
     public void addDevice(ElectricDevice device) {
         devices.add(device);
-        System.out.println("Device added.");
     }
 
     /**
      * Function to remove a device from home
      * @param counter
      */
-    public void removeDevice(int counter){
+    public boolean removeDevice(int counter){
         if ((counter >= 0) && (counter < devices.size()))
         {
             devices.remove(counter);
-            System.out.println("Device removed.");
+
+            return true;
         }
-        else
-            throw new IllegalArgumentException("No such device at home.");
+
+        return false;
     }
 
     /**
      * Function to remove all devices from home
      */
-    public void removeDevices(){
+    public boolean removeDevices(){
         if (devices.size() == 0)
-            System.out.println("No devices at home.");
+            return false;
         else
         {
             devices.clear();
-            System.out.println("Devices removed.");
+
+            return true;
         }
     }
 
     /**
      * Function to turn off all devices in the house
      */
-    public void turnOffAllDevices() {
+    public boolean turnOffAllDevices() {
         if (devices.size() == 0)
-            System.out.println("No devices at home.");
+            return false;
         else
             for (int i = 0; i < devices.size(); i++)
                 devices.get(i).off();
+
+        return true;
     }
 
     /**
      * Function to turn on all devices in the house
      */
-    public void turnOnAllDevices() {
+    public boolean turnOnAllDevices() {
         if (devices.size() == 0)
-            System.out.println("No devices at home.");
+            return false;
         else
             for (int i = 0; i < devices.size(); i++)
                 devices.get(i).on();
+
+        return true;
     }
 
     /**
@@ -126,13 +131,13 @@ public class Home {
     /**
      * Function to sort all devices from the smallest to the largest power
      */
-    public void sort() {
+    public boolean sort() {
         if (devices.size() == 0)
-            System.out.println("No devices at home.");
-        else{
+            return false;
+        else
             Collections.sort(devices);
-            System.out.println("Devices sorted from the smallest to the largest power.");
-        }
+
+        return true;
     }
 
     /**
