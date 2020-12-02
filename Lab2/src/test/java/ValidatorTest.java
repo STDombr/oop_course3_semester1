@@ -14,5 +14,7 @@ public class ValidatorTest {
         Assert.assertFalse(Validator.validateDocument("False.xml", "Tariff.xsd"));
         Assert.assertFalse(Validator.validateDocument("Tariff.xml", "False.xsd"));
         Assert.assertFalse(Validator.validateDocument("False.xml", "False.xsd"));
+
+        Assert.assertFalse(Validator.validateDocument("Tariff1.xml", "Tariff.xsd"));
     }
 }
