@@ -10,8 +10,8 @@ public class ClassInfo {
         System.out.println("Class name: " + inputClass.getName());
         System.out.println();
         Constructor<?>[] constructors = inputClass.getConstructors();
-        System.out.println("Class constructors:");
 
+        System.out.println("Class constructors:");
         if(constructors.length == 0){
             System.out.println("This class doesn't contain constructors");
         } else {
@@ -81,7 +81,6 @@ public class ClassInfo {
                 System.out.println(out.toString());
             }
         }
-        System.out.println();
         System.out.println();
     }
 }
