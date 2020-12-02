@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Tariffs name="Tariff"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="Tariff.xsd">
+
+    <tariff id = "tariff1">
+        <name>SuperNet Turbo</name>
+        <operatorName>Vodafone</operatorName>
+        <payroll>100</payroll>
+        <callPrices>
+            <inNetCallPrice>0</inNetCallPrice>
+            <outNetCallPrice>0</outNetCallPrice>
+            <landlineCallPrice>0.5</landlineCallPrice>
+        </callPrices>
+        <smsPrice>0.5</smsPrice>
+        <parameters>
+            <countOfFavNumbers>5</countOfFavNumbers>
+            <connectionPrice>100</connectionPrice>
+            <tariffication>60 seconds</tariffication>
+        </parameters>
+
+        <name>SuperNet Turbo</name>
+        <operatorName>Vodafone</operatorName>
+        <payroll>100</payroll>
+        <callPrices>
+            <inNetCallPrice>0</inNetCallPrice>
+            <outNetCallPrice>0</outNetCallPrice>
+            <landlineCallPrice>0.5</landlineCallPrice>
+        </callPrices>
+        <smsPrice>0.5</smsPrice>
+        <parameters>
+            <countOfFavNumbers>5</countOfFavNumbers>
+            <connectionPrice>100</connectionPrice>
+            <tariffication>60 seconds</tariffication>
+        </parameters>
+    </tariff>
+
+    <tariff id = "tariff2">
+        <name>SuperNet Start</name>
+        <operatorName>Vodafone</operatorName>
+        <payroll>70</payroll>
+        <callPrices>
+            <inNetCallPrice>0.5</inNetCallPrice>
+            <outNetCallPrice>0.5</outNetCallPrice>
+            <landlineCallPrice>1</landlineCallPrice>
+        </callPrices>
+        <smsPrice>1</smsPrice>
+        <parameters>
+            <countOfFavNumbers>2</countOfFavNumbers>
+            <connectionPrice>70</connectionPrice>
+            <tariffication>60 seconds</tariffication>
+        </parameters>
+    </tariff>
+
+    <tariff id = "tariff3">
+        <name>SuperNet Pro</name>
+        <operatorName>Vodafone</operatorName>
+        <payroll>150</payroll>
+        <callPrices>
+            <inNetCallPrice>0</inNetCallPrice>
+            <outNetCallPrice>0</outNetCallPrice>
+            <landlineCallPrice>0.5</landlineCallPrice>
+        </callPrices>
+        <smsPrice>0.5</smsPrice>
+        <parameters>
+            <countOfFavNumbers>10</countOfFavNumbers>
+            <connectionPrice>150</connectionPrice>
+            <tariffication>60 seconds</tariffication>
+        </parameters>
+    </tariff>
+
+    <tariff id = "tariff4">
+        <name>SuperNet Unlim</name>
+        <operatorName>Vodafone</operatorName>
+        <payroll>230</payroll>
+        <callPrices>
+            <inNetCallPrice>0</inNetCallPrice>
+            <outNetCallPrice>0</outNetCallPrice>
+            <landlineCallPrice>0</landlineCallPrice>
+        </callPrices>
+        <smsPrice>0</smsPrice>
+        <parameters>
+            <countOfFavNumbers>20</countOfFavNumbers>
+            <connectionPrice>230</connectionPrice>
+            <tariffication>60 seconds</tariffication>
+        </parameters>
+    </tariff>
+
+</Tariffs>
